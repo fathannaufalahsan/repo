@@ -229,40 +229,139 @@
         <button onclick="window.location.href='#'">Jelajahi Sekarang</button>
     </div>
 
-    <!-- Product Container -->
-    <div class="container">
-        <div class="product">
-            <img src="https://via.placeholder.com/350" alt="Aplikasi Hebat">
-            <h2>Aplikasi Hebat</h2>
-            <p>Aplikasi hebat ini akan membantu Anda melakukan banyak hal dengan mudah. Dengan fitur unggulan dan desain yang intuitif, aplikasi ini cocok untuk semua kalangan.</p>
-            <p class="price">Rp 99.000</p>
-            <button onclick="openModal('Aplikasi Hebat', 'Deskripsi lebih lanjut tentang aplikasi hebat ini.')">Beli Sekarang</button>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/350" alt="Aplikasi Produktivitas">
-            <h2>Aplikasi Produktivitas</h2>
-            <p>Mulailah meningkatkan produktivitas Anda dengan aplikasi ini. Fitur-fitur lengkap untuk mempermudah manajemen waktu dan tugas sehari-hari.</p>
-            <p class="price">Rp 79.000</p>
-            <button onclick="openModal('Aplikasi Produktivitas', 'Deskripsi lebih lanjut tentang aplikasi produktivitas.')">Beli Sekarang</button>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/350" alt="Aplikasi Keamanan">
-            <h2>Aplikasi Keamanan</h2>
-            <p>Pastikan data Anda aman dengan aplikasi ini. Keamanan tinggi dan perlindungan dari ancaman digital yang terus berkembang.</p>
-            <p class="price">Rp 149.000</p>
-            <button onclick="openModal('Aplikasi Keamanan', 'Deskripsi lebih lanjut tentang aplikasi keamanan.')">Beli Sekarang</button>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/350" alt="Aplikasi Kreativitas">
-            <h2>Aplikasi Kreativitas</h2>
-            <p>Berikan kreativitas Anda tempat untuk berkembang dengan aplikasi desain yang mudah digunakan dan penuh fitur menarik.</p>
-            <p class="price">Rp 129.000</p>
-            <button onclick="openModal('Aplikasi Kreativitas', 'Deskripsi lebih lanjut tentang aplikasi kreativitas.')">Beli Sekarang</button>
-        </div>
+<div class="container">
+    <!-- Product 1 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/350" alt="Aplikasi Hebat">
+        <h2>Aplikasi Hebat</h2>
+        <p>Aplikasi hebat ini akan membantu Anda melakukan banyak hal dengan mudah. Dengan fitur unggulan dan desain yang intuitif, aplikasi ini cocok untuk semua kalangan.</p>
+        <p class="price">Rp 99.000</p>
+        <button onclick="openModal('Aplikasi Hebat', 'Deskripsi lebih lanjut tentang aplikasi hebat ini.', '99')">Beli Sekarang</button>
     </div>
+
+    <!-- Product 2 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/350" alt="Aplikasi Produktivitas">
+        <h2>Aplikasi Produktivitas</h2>
+        <p>Mulailah meningkatkan produktivitas Anda dengan aplikasi ini. Fitur-fitur lengkap untuk mempermudah manajemen waktu dan tugas sehari-hari.</p>
+        <p class="price">Rp 79.000</p>
+        <button onclick="openModal('Aplikasi Produktivitas', 'Deskripsi lebih lanjut tentang aplikasi produktivitas.', '79')">Beli Sekarang</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/350" alt="Aplikasi Keamanan">
+        <h2>Aplikasi Keamanan</h2>
+        <p>Pastikan data Anda aman dengan aplikasi ini. Keamanan tinggi dan perlindungan dari ancaman digital yang terus berkembang.</p>
+        <p class="price">Rp 149.000</p>
+        <button onclick="openModal('Aplikasi Keamanan', 'Deskripsi lebih lanjut tentang aplikasi keamanan.', '149')">Beli Sekarang</button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/350" alt="Aplikasi Kreativitas">
+        <h2>Aplikasi Kreativitas</h2>
+        <p>Berikan kreativitas Anda tempat untuk berkembang dengan aplikasi desain yang mudah digunakan dan penuh fitur menarik.</p>
+        <p class="price">Rp 129.000</p>
+        <button onclick="openModal('Aplikasi Kreativitas', 'Deskripsi lebih lanjut tentang aplikasi kreativitas.', '129')">Beli Sekarang</button>
+    </div>
+</div>
+
+<!-- Modal for purchasing -->
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Metode Pembayaran</h2>
+        <p id="productName"></p>
+        <p id="productDesc"></p>
+        <p id="productPrice"></p>
+
+        <!-- Payment methods -->
+        <label for="paymentMethod">Pilih Metode Pembayaran:</label>
+        <select id="paymentMethod">
+            <option value="creditCard">Kartu Kredit</option>
+            <option value="bankTransfer">Transfer Bank</option>
+            <option value="eWallet">E-Wallet</option>
+        </select>
+
+        <button onclick="completePayment()">Bayar Sekarang</button>
+    </div>
+</div>
+
+<!-- Modal for successful payment -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSuccessModal()">&times;</span>
+        <h2>Pembayaran Sukses!</h2>
+        <p>Terima kasih telah melakukan pembelian. Anda dapat mengunduh aplikasi di bawah ini.</p>
+        <a href="path/to/your/file.zip" download><button>Download Aplikasi</button></a>
+    </div>
+</div>
+
+<script>
+    // Open the modal for purchase
+    function openModal(name, desc, price) {
+        document.getElementById('productName').textContent = name;
+        document.getElementById('productDesc').textContent = desc;
+        document.getElementById('productPrice').textContent = 'Harga: Rp ' + price + '.000';
+        document.getElementById('paymentModal').style.display = "block";
+    }
+
+    // Close the modal
+    function closeModal() {
+        document.getElementById('paymentModal').style.display = "none";
+    }
+
+    // Close success modal
+    function closeSuccessModal() {
+        document.getElementById('successModal').style.display = "none";
+    }
+
+    // Simulate payment completion
+    function completePayment() {
+        // Simulate successful payment (you would add actual payment gateway logic here)
+        document.getElementById('paymentModal').style.display = "none";
+        document.getElementById('successModal').style.display = "block";
+    }
+</script>
+
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 
     <!-- Modal for Additional Info -->
     <div id="myModal" class="modal">
